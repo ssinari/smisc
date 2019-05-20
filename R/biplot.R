@@ -1,21 +1,22 @@
 #' Biplot from a principal components analysis (PCA)
 #'
-#' @params PC  a prcomp object obtained by conducting a principal components
+#' @import scales
+#' @param PC  a prcomp object obtained by conducting a principal components
 #'     analysis.
-#' @params d a data frame of metadata containing the sample identifiers and
+#' @param d a data frame of metadata containing the sample identifiers and
 #'     categorical classification of the samples.
-#' @params colors a character vector of same length as the number of levels in
+#' @param colors a character vector of same length as the number of levels in
 #'     the classfication.
-#' @params legend_t the name of the column in d that gives the sample
+#' @param legend_t the name of the column in d that gives the sample
 #'     classification.
-#' @params varnames a character vector of names for the variables in the biplot.
-#' @params labels a logical indicating whether samples should be labelled.
-#' @params title a title for the biplot.
-#' @params x principal component to be plotted along the horizontal (x) axis or
+#' @param varnames a character vector of names for the variables in the biplot.
+#' @param labels a logical indicating whether samples should be labelled.
+#' @param title a title for the biplot.
+#' @param x principal component to be plotted along the horizontal (x) axis or
 #'     abcissa.
-#' @params y principal component to be plotted along the vertical (y) axis or
+#' @param y principal component to be plotted along the vertical (y) axis or
 #'     ordinate.
-#' @return A [ggplot2 object]
+#' @return A ggplot2 object
 #' @rdname PCbiplot
 #' @export
 PCbiplot <- function(PC
@@ -27,8 +28,8 @@ PCbiplot <- function(PC
             , title
             , x="PC1"
             , y="PC2") {
-    require(ggplot2)
-    require(scales)
+    requireNamespace(ggplot2)
+    requireNamespace(scales)
     ## Thanks to "crayola" for sharing this code on
     ## https://stackoverflow.com/questions/6578355/plotting-pca-biplot-with-ggplot2
 ##### PC being a prcomp object

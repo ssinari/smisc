@@ -1,11 +1,21 @@
 #' Summary of the data set
+#' 
 #' The summary produced by this function is the one from Hmisc package.
 #' Here we have isolated the function and used it to render a LaTeX code that
 #' can be used to produce PDF files.
+#' @import Hmisc
+#' @import rms
 #' @param obj a dataframe.
 #' @param name name of the dataset.
 #' @rdname summarize
 #' @export
+summarize <- function(obj, name = ""){
+  requireNamespace(Hmisc)
+  requireNamespace(rms)
+  latex.describe.new(describe(obj), descript =paste("Summary of the",name,"Dataset"), file = "")
+  cat("\\clearpage\n")
+}
+
 latex.describe.single <-
   function(object, title=NULL, vname,
            file, append=FALSE, size='small',
@@ -209,9 +219,3 @@ latex.describe.new <- function (object
     }
 }
 
-summarize <- function(obj, name = ""){
-    require(Hmisc)
-    require(rms)
-    latex.describe.new(describe(obj), descript =paste("Summary of the",name,"Dataset"), file = "")
-    cat("\\clearpage\n")
-}
