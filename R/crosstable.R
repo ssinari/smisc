@@ -1,5 +1,7 @@
 #' A crosstable in LaTeX
 #' @import magrittr
+#' @import stats
+#' @import utils
 #' @param data a dataframe
 #' @param caption caption for the table produced by the function.
 #' @param digits number of digits in the output.
@@ -13,17 +15,21 @@
 #' @return a latex crosstable with caption and margins
 #' @export
 ss_xtabs <- function(formula, data, caption = "", addmargins = NULL, digits){
-    requireNamespace(magrittr)
-    cat("\\begin{table}[!h]\n")
-    cat(paste0("\\caption{", caption,"}\n"))
-    cat("\\begin{center}\n")
-    data %>%
-        xtabs(formula, data = .) %>%
-        addmargins(addmargins) %>%
-        ftable() %>%
-        toLatex(digits = digits)
-    cat("\\end{center}\n")
-    cat("\\end{table}\n")
-    
+  requireNamespace("magrittr", quietly = TRUE)
+  requireNamespace("stats", quietly = TRUE)
+  requireNamespace("utils", quietly = TRUE)
+  cat("\\begin{table}[!h]\n")
+  cat(paste0("\\caption{", caption,"}\n"))
+  cat("\\begin{center}\n")
+  data %>%
+    xtabs(formula, data = .) %>%
+    addmargins(addmargins) %>%
+    ftable() %>%
+    toLatex(digits = digits)
+  cat("\\end{center}\n")
+  cat("\\end{table}\n")
+  
 }
 
+## quiets concerns of R CMD check re: the .'s that appear in pipelines
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))

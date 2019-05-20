@@ -10,8 +10,8 @@
 #' @rdname summarize
 #' @export
 summarize <- function(obj, name = ""){
-  requireNamespace(Hmisc)
-  requireNamespace(rms)
+  requireNamespace("Hmisc", quietly = TRUE)
+  requireNamespace("rms", quietly = TRUE)
   latex.describe.new(describe(obj), descript =paste("Summary of the",name,"Dataset"), file = "")
   cat("\\clearpage\n")
 }
