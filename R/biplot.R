@@ -29,6 +29,8 @@ PCbiplot <- function(PC
             , y="PC2") {
     require(ggplot2)
     require(scales)
+    ## Thanks to "crayola" for sharing this code on
+    ## https://stackoverflow.com/questions/6578355/plotting-pca-biplot-with-ggplot2
 ##### PC being a prcomp object
 ##### data <- data.frame(obsnames=row.names(PC$x), PC$x)
     data <- data.frame(obsnames = d$ID, PC$x, State = factor(d[,legend_t]))
