@@ -71,16 +71,16 @@ PCbiplot <- function(PC
   q4 <- subset(datapc, eval(parse(text = "PC1 > 0 & PC2 < 0")))
   
   if(dim(q1)[1] > 0){
-    plot <- plot + geom_text(data=q1, aes_string(x="v1", y="v2", label="varnames", fontface = "bold"), size = 3, vjust=-1, color="black")
+    plot <- plot + geom_text(data=q1, aes_string(x="v1", y="v2", label="varnames"), fontface = "bold", size = 3, vjust=-1, color="black")
   }
   if(dim(q2)[1] > 0){
-    plot <- plot + geom_text(data=q2, aes_string(x="v1", y="v2", label="varnames", fontface = "bold"), size = 3, vjust=-1, color="black")
+    plot <- plot + geom_text(data=q2, aes_string(x="v1", y="v2", label="varnames"), fontface = "bold", size = 3, vjust=-1, color="black")
   }
   if(dim(q3)[1] > 0){
-    plot <- plot + geom_text(data=q3, aes_string(x="v1", y="v2", label="varnames", fontface = "bold"), size = 3, vjust=-1, color="black")
+    plot <- plot + geom_text(data=q3, aes_string(x="v1", y="v2", label="varnames"), fontface = "bold", size = 3, vjust=-1, color="black")
   }
   if(dim(q4)[1] > 0){
-    plot <- plot + geom_text(data=q4, aes_string(x="v1", y="v2", label="varnames", fontface = "bold"), size = 3, vjust=-1, color="black")
+    plot <- plot + geom_text(data=q4, aes_string(x="v1", y="v2", label="varnames"), fontface = "bold", size = 3, vjust=-1, color="black")
   }
   
   plot <- plot + geom_segment(data=datapc, aes_string(x="0", y="0", xend="v1", yend="v2"),

@@ -14,18 +14,18 @@
 #' @param addmargins parameter for addmargins from stats package.
 #' @return a latex crosstable with caption and margins
 #' @export
-ss_xtabs <- function(formula, data, caption = "", addmargins = NULL, digits){
+ss_xtabs <- function(formula, data, caption = "", addmargins = NULL, digits = 0){
   requireNamespace("magrittr", quietly = TRUE)
   requireNamespace("stats", quietly = TRUE)
   requireNamespace("utils", quietly = TRUE)
   cat("\\begin{table}[!h]\n")
   cat(paste0("\\caption{", caption,"}\n"))
   cat("\\begin{center}\n")
-  data %>%
-    xtabs(formula, data = .) %>%
-    addmargins(addmargins) %>%
+  xtbl <- xtabs(formula, data = data)
+  if(!is.null(addmargins)) xtbl <- xtbl %>% addmargins(addmargins)
+  xtbl %>%
     ftable() %>%
-    toLatex(digits = digits)
+    utils::toLatex(digits = digits) %>% cat()
   cat("\\end{center}\n")
   cat("\\end{table}\n")
   

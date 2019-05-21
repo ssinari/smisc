@@ -18,7 +18,7 @@ Imports:
  scales  (>= 1.0.0)  ,
  ggplot2 (>= 3.1.1)  ,
  stats   (>= 3.6.0)  ,
- utils   (>= 3.6.0)
+ utils   (>= 3.6.0) 
 Suggests:
  knitr (>= 0.1.0)
 RoxygenNote: 6.1.1
